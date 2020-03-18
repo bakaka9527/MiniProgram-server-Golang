@@ -7,14 +7,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// GetCorpService 管理用户企业身份服务
+// 管理用户企业身份服务
 type GetCorpService struct {
-	Uid    string `form:"uid" json:"uid"`
+	Uid    int    `form:"uid" json:"uid"`
 	Token  string `form:"token" json:"token"`
 	Corpid string `form:"corpid" json:"corpid"`
 }
 
-// GetCorp 获取用户企业信息
+// 获取用户企业信息
 func (service *GetCorpService) GetCorp(c *gin.Context) serializer.Response {
 
 	if !model.CheckToken(service.Uid, service.Token) {
@@ -22,7 +22,7 @@ func (service *GetCorpService) GetCorp(c *gin.Context) serializer.Response {
 	}
 
 	var corp model.Corp
-	err := model.DB2.QueryRow("select id,corp_code,corpname,template_code,type_corpname,type_username from organization where corp_code =?", service.Corpid).
+	err := model.DB.QueryRow("select id,corp_code,corpname,template_code,type_corpname,type_username from organization where corp_code =?", service.Corpid).
 		Scan(&corp.Id, &corp.Corpid, &corp.Corpname, &corp.TemplateCode, &corp.TypeCorpname, &corp.TypeUsername)
 	if err != nil {
 		return serializer.Err(10006, "获取企业信息失败", nil)

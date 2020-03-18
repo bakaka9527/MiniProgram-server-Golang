@@ -2,7 +2,9 @@
 
 > 这里是NCOV 2020疫情防控-人员健康管理平台开源项目的小程序后端--Golang版本。  详细项目记录及学习文档见[doc文件夹](https://github.com/huagua/MiniProgram-server-Golang/tree/master/doc)
 
-主项目入口 >> https://github.com/2020NCOV/ncov-report
+主项目入口 >> https://github.com/2020NCOV/ncov-report  
+
+![build](https://github.com/2020NCOV/MiniProgram-server-Golang/workflows/build/badge.svg)
 
 ## 项目导航
 - [ncov-report-wx-server-Golang](#ncov-report-wx-server-golang)
@@ -61,12 +63,7 @@
 ### 2.在项目根目录新建文件.env, 内容如下：
 ```
 MYSQL_DSN="db_user:db_passwd@tcp(127.0.0.1:3306)/db_name?charset=utf8&parseTime=True&loc=Local" # Mysql连接配置
-REDIS_ADDR="127.0.0.1:6379" # Redis端口和地址
-REDIS_PW=""                 # Redis连接密码
-REDIS_DB=""                 # Redis库从0到10，不填即为0
-SESSION_SECRE="fRJ%KVZVoq4Du4#*Rx" # Seesion密钥，必须设置而且不要泄露
 GIN_MODE="debug"            # 设置gin的运行模式，有 debug 和 release
-LOG_LEVEL="debug"
 APP_ID=""                   #appid
 APP_SECRET=""              #appsecret
 ```
